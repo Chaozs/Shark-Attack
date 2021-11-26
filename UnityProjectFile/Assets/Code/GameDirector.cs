@@ -7,6 +7,9 @@ public class GameDirector : MonoBehaviour
     private GameObject MenuCanvas; //gameobject that contains canvas of main menu
     private GameObject InGameManager; //gameobject that contains aspects related to in-game
     private GameObject InGameUI;
+    private gameMode currentMode;
+
+    public enum gameMode { MainMenu, InGame, PauseMenu, HowToPlay };
 
     void Awake()
     {
@@ -19,6 +22,7 @@ public class GameDirector : MonoBehaviour
         if (InGameUI == null) Debug.Log("InGameUI not found");
 
         InGameManager.SetActive(false);
+        currentMode = gameMode.MainMenu;
     }
 
     //this function will be called by MenuUI's sendMessage
@@ -26,13 +30,29 @@ public class GameDirector : MonoBehaviour
     {
         MenuCanvas.SetActive(false);
         InGameManager.SetActive(true);
+        currentMode = gameMode.InGame;
     }
 
     //this function will be called by MenuUI's sendMessage
     public void HowToPlay()
     {
         MenuCanvas.SetActive(false);
+        currentMode = gameMode.HowToPlay;
         //TODO
+    }
+
+    //called when game is paused
+    public void PauseGame()
+    {
+        currentMode = gameMode.PauseMenu;
+        Time.timeScale = 0;
+    }
+
+    //called when game is continued
+    public void unPauseGame()
+    {
+        currentMode = gameMode.InGame;
+        Time.timeScale = 1;
     }
 
     //this function will be called if player returns to menu
@@ -40,6 +60,7 @@ public class GameDirector : MonoBehaviour
     {
         MenuCanvas.SetActive(true);
         InGameManager.SetActive(false);
+        currentMode = gameMode.MainMenu;
     }
 
     // Update is called once per frame
