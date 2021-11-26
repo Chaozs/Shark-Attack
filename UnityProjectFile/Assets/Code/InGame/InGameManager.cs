@@ -32,7 +32,7 @@ public class InGameManager : MonoBehaviour
 
     IEnumerator countdownToStart()
     {
-        for (int i = 5; i > 0; i-- )
+        for (int i = 2; i > 0; i-- )
         {
             countDown.text = "Starting in " + i;
             yield return new WaitForSeconds(1);
@@ -40,6 +40,8 @@ public class InGameManager : MonoBehaviour
 
         playerController.allowSharkMovement(true);
         countDown.text = "Go! ";
+        yield return new WaitForSeconds(1);
+        countDown.text = "r";
     }
 
     void checkEscapeKey()

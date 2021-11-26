@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private bool gameActive = false;
     private Rigidbody sharkRigidBody;
+    private float playerSpeed = 0.6f;
 
     //get rigid body of shark
     private void Awake()
@@ -29,16 +30,29 @@ public class PlayerController : MonoBehaviour
 
     void checkMovement()
     {
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKey(KeyCode.A)) //move left
         {
-            Debug.Log("A is clicked");
-            sharkRigidBody.AddForce(Vector3.left);
+            Vector3 currentPosition = transform.localPosition;
+            if (currentPosition.x < -290) return; //dont allow to move off screen
+            transform.localPosition = new Vector3(currentPosition.x - playerSpeed, currentPosition.y, currentPosition.z);
+
         }
-        if (Input.GetKey(KeyCode.D))
-            sharkRigidBody.AddForce(Vector3.right);
-        if (Input.GetKey(KeyCode.W))
-            sharkRigidBody.AddForce(Vector3.up);
-        if (Input.GetKey(KeyCode.S))
-            sharkRigidBody.AddForce(Vector3.down);
+        if (Input.GetKey(KeyCode.D)) //move right
+        {
+            Vector3 currentPosition = transform.localPosition;
+            if (currentPosition.x > 290) return; //dont allow to move off screen
+            transform.localPosition = new Vector3(currentPosition.x + playerSpeed, currentPosition.y, currentPosition.z);
+            
+        }
+    }
+
+    void setSpeedDefault()
+    {
+        playerSpeed = 0.6f;
+    }
+
+    void changePlayerSpeed(float change)
+    {
+        playerSpeed = playerSpeed + change;
     }
 }
