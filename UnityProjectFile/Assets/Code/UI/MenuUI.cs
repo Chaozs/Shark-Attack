@@ -27,4 +27,9 @@ public class MenuUI : MonoBehaviour
         SendMessageUpwards("BackToMenu");
     }
 
+    public void continueGame()
+    {
+        SendMessageUpwards("unPauseGame");
+    }
+
 }

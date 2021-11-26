@@ -5,11 +5,22 @@ using UnityEngine;
 public class InGameManager : MonoBehaviour
 {
     private bool gameIsPaused = false;
+    private GameObject player;
+    private PlayerController playerController;
+    private GameObject PauseMenu;
+    public TMPro.TMP_Text countDown;
+
+    private void Awake()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        if (player == null) Debug.Log("Player not found");
+        playerController = player.transform.GetComponent<PlayerController>();
+    }
 
     // Start is called before the first frame update
-    void Start()
+    public void gameStart()
     {
-        
+        StartCoroutine(countdownToStart());
     }
 
     //check for escape key pressed for pausing game
@@ -19,18 +30,30 @@ public class InGameManager : MonoBehaviour
 
     }
 
+    IEnumerator countdownToStart()
+    {
+        for (int i = 5; i > 0; i-- )
+        {
+            countDown.text = "Starting in " + i;
+            yield return new WaitForSeconds(1);
+        }
+
+        playerController.allowSharkMovement(true);
+        countDown.text = "Go! ";
+    }
+
     void checkEscapeKey()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (!gameIsPaused)
             {
-                SendMessage("PauseGame");
+                SendMessageUpwards("PauseGame");
                 gameIsPaused = !gameIsPaused;
             }
             else
             {
-                SendMessage("unPauseGame");
+                SendMessageUpwards("unPauseGame");
                 gameIsPaused = !gameIsPaused;
             }
         }

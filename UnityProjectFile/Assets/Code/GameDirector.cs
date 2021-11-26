@@ -31,6 +31,7 @@ public class GameDirector : MonoBehaviour
         MenuCanvas.SetActive(false);
         InGameManager.SetActive(true);
         currentMode = gameMode.InGame;
+        InGameManager.GetComponent<InGameManager>().gameStart();
     }
 
     //this function will be called by MenuUI's sendMessage
@@ -46,6 +47,7 @@ public class GameDirector : MonoBehaviour
     {
         currentMode = gameMode.PauseMenu;
         Time.timeScale = 0;
+        InGameUI.transform.Find("PauseMenu").gameObject.SetActive(true);
     }
 
     //called when game is continued
@@ -53,6 +55,7 @@ public class GameDirector : MonoBehaviour
     {
         currentMode = gameMode.InGame;
         Time.timeScale = 1;
+        InGameUI.transform.Find("PauseMenu").gameObject.SetActive(false);
     }
 
     //this function will be called if player returns to menu
