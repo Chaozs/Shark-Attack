@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 6283263626917782543}
   - component: {fileID: 8130780406338408645}
   - component: {fileID: 6666653571930346421}
+  - component: {fileID: 869483528293952701}
   m_Layer: 0
   m_Name: FishV2
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,8 +90,21 @@ MeshCollider:
   m_GameObject: {fileID: 7770584863604633872}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 3100006622114138374, guid: a8fd0d08c30426d4c978a4998752cf7d, type: 3}
+--- !u!65 &869483528293952701
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7770584863604633872}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8431362, y: 0.3448857, z: 0.13835584}
+  m_Center: {x: 0.02699241, y: -0.026563115, z: 0}

@@ -8,6 +8,7 @@ public class GameDirector : MonoBehaviour
     private GameObject InGameManager; //gameobject that contains aspects related to in-game
     private GameObject InGameUI;
     private gameMode currentMode;
+    private GameObject PlayingField;
 
     public enum gameMode { MainMenu, InGame, PauseMenu, HowToPlay };
 
@@ -16,10 +17,12 @@ public class GameDirector : MonoBehaviour
         MenuCanvas = GameObject.FindGameObjectWithTag("MenuCanvas");
         InGameManager = GameObject.FindGameObjectWithTag("InGameManager");
         InGameUI = InGameManager.transform.Find("UICanvas").gameObject;
+        PlayingField = InGameManager.transform.Find("PlayingField").gameObject;
 
         if (MenuCanvas == null) Debug.Log("MenuCanvas not found");
         if (InGameManager == null) Debug.Log("InGameManager not found");
         if (InGameUI == null) Debug.Log("InGameUI not found");
+        if (PlayingField == null) Debug.Log("playingField not found");
 
         InGameManager.SetActive(false);
         currentMode = gameMode.MainMenu;

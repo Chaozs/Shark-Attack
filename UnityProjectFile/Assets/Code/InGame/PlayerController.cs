@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private bool gameActive = false;
     private Rigidbody sharkRigidBody;
     private float playerSpeed = 0.6f;
+    public GameObject score;
 
     //get rigid body of shark
     private void Awake()
@@ -26,6 +27,24 @@ public class PlayerController : MonoBehaviour
     {
         if (!gameActive) return; //only check for shark movement is game is active
         checkMovement();
+
+
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        //Debug.Log(other.gameObject.tag);
+        if(other.gameObject.tag == "Fish")
+        {
+            Debug.Log(other.gameObject.tag);
+            score.transform.GetComponent<ScoreManager>().incScore(1);
+        }
+        else
+        {
+            Debug.Log(other.gameObject.tag);
+            score.transform.GetComponent<ScoreManager>().incScore(-1);
+        }
+        Destroy(other.gameObject);
     }
 
     void checkMovement()
@@ -55,4 +74,6 @@ public class PlayerController : MonoBehaviour
     {
         playerSpeed = playerSpeed + change;
     }
+
+
 }

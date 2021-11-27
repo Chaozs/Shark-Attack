@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 2469199303159883398}
   - component: {fileID: 405514074507203148}
   - component: {fileID: 2698599783777480253}
+  - component: {fileID: 2080858317481408859}
   m_Layer: 0
   m_Name: FishV3
-  m_TagString: Untagged
+  m_TagString: Poison
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -89,8 +90,22 @@ MeshCollider:
   m_GameObject: {fileID: 2206852426022253465}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7834934524071737294, guid: ae51ad94fa7d3764d957aa512d506d00, type: 3}
+--- !u!136 &2080858317481408859
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2206852426022253465}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.43397656
+  m_Height: 0.15870333
+  m_Direction: 1
+  m_Center: {x: 0.049935997, y: -0.03918491, z: 0}

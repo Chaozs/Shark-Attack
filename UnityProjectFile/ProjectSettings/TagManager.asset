@@ -6,6 +6,9 @@ TagManager:
   tags:
   - MenuCanvas
   - InGameManager
+  - playingField
+  - Poison
+  - Fish
   layers:
   - Default
   - TransparentFX
